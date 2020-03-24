@@ -1,16 +1,21 @@
 % Funcion que dado el punto de inicio del taladro (herramienta), los radios
-% de la elipse y la orientacion en el eje Z, devuelva el array del
+% de la elipse y la orientacion en ángulos de euler, devuelva el array del
 % conjuntos de puntos de la trayectria. GENERADOR DE TRAYECTORIAS.
 
-function trayectoria = gen_trayectoria(p0, r1, r2,theta)
+function trayectoria = gen_trayectoria(p0, r1, r2,eul)
     
     close all;
     
-    %Nos aseguramos que la pose p0 sean 3x1
-    if size(p0,1) ~= 3,
-        error('p0 is not 3x1 vector');
+    % Nos aseguramos que la pose p0 sean 1x3
+    if size(p0,1) ~= 1,
+        error('p0 is not 1x3 vector');
     end;
 
+    % Nos aseguramos que el vector de orientación sea 1x3
+    if size(eul,1) ~= 1,
+        error('eul is not 1x3 vector');
+    end;
+    
     % Punto inicial 
     x0 = p0(1);
     y0 = p0(2);
@@ -18,12 +23,11 @@ function trayectoria = gen_trayectoria(p0, r1, r2,theta)
     plot3(x0,y0,z0,'rO');
     hold on;
     
-    % Orientación 
-    eulZYX = [theta, 0, 0];     %Euler = rotZ*rotY*rotX
-    mat = eul2rotm(eulZYX);
+    % Orientación Euler = rotZ*rotY*rotX
+    mat = eul2rotm(eul);    % ZYX
     
     % Pose inicial
-    T = [[mat, p0]; [0 0 0 1]];
+    T = [[mat, p0']; [0 0 0 1]];
     createFRAME(T,'r','To',2);
     
     t = 0:pi/200:2*pi;
