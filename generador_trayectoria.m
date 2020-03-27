@@ -1,5 +1,5 @@
 % Funcion que dado el punto de inicio del taladro (herramienta), los radios
-% de la elipse y la orientacion en ángulos de euler, devuelva el array del
+% de la elipse y la orientacion en Ã¡ngulos de euler, devuelva el array del
 % conjuntos de puntos de la trayectria. GENERADOR DE TRAYECTORIAS.
 
 function trayectoria = generador_trayectoria(p0, r1, r2, eul)
@@ -10,15 +10,13 @@ function trayectoria = generador_trayectoria(p0, r1, r2, eul)
          error('p0 is not 3x1 vector');
     end
 
-    % Nos aseguramos que el vector de orientación sea 1x3
+    % Nos aseguramos que el vector de orientaciÃ³n sea 1x3
     if size(eul,1) ~= 1
         error('eul is not 1x3 vector');
     end   
     
-    % Matriz de orientación
+    % Matriz de orientaciÃ³n
     rotmZYX  = eul2rotm(eul);
-    
-    
     
     % Punto inicial
     x0 = p0(1);
@@ -31,8 +29,7 @@ function trayectoria = generador_trayectoria(p0, r1, r2, eul)
     % Sistema de referencia
     T = [[rotmZYX, [0;0;0]]; [0 0 0 1]];
     createFRAME(T,'m','To',2);
-    
-    
+   
     t = 0:pi/200:2*pi;
     
     % Calculamos el centro de la elipse
