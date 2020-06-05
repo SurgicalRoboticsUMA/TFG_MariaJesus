@@ -1,0 +1,9 @@
+- Prueba 1: plotea la trayectoria de una vez, y luego dentro del bucle con una pausa de 0.01s. La trayectoria se pinta bien, pero parace que los puntos no siguen un orden no? Es como si se recorriera la elipse varias veces. Mirando tu código del generador de trayectorias creo que es en el bucle de la línea 57. 
+
+- Prueba 2: he corregido el bucle que te he dicho antes en le funcion, la nueva se llama generador_trayectoria2.m, y ahora ya si lo recorre bien. 
+
+- Prueba 3: esta prueba ya es mándandole los puntos al robot y representando lo que llega por el topic de la posición. Un vídeo como este es lo que te decía en la memoria.
+Podrías hacer o bien, uno por aplicación, o un montaje donde se vea el movimiento para cada experimento. Ponlo bonito, con un título en la gráfica, etiquetas en los ejes, etc., y el simulador que se vea bien el robot. Le pones una portada al principio donde ponga tu título del trabajo del TFG y eso, y si haces un único vídeo le pones una entradilla donde ponga cada experimento cuál es, y qué parámetros tiene. 
+Para grabar de ubuntu puedes usar un programa que se llama Kazam, que se descarga fácil y es sencillo. Y luego para hacer el montaje en Windows hay muchos programas sencillos que te hacen eso de forma fácil y rápida. 
+
+
