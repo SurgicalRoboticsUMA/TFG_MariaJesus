@@ -40,10 +40,7 @@ function trayectoria = generador_trayectoria(p0, r1, r2, eul)
     T0 = [[rotm,[0;0;0]]; [0 0 0 1]];
     createFRAME(T0,'y','T0',0.03);
    
-    % Frecuencia y periodo de muestreo
-    f = 125; %Hz
-    T = 1/f;
-    t = 0:T:2*pi;
+    t = 0:pi/180:2*pi;
     
     % Calculamos el centro de la elipse
     Cx = x0 - r1*cos(0);
@@ -55,8 +52,8 @@ function trayectoria = generador_trayectoria(p0, r1, r2, eul)
 
     % Calculamos el array de puntos de la elipse sin orientacion
     for i = 1:length(t)
-        x_(i) = Cx + r1*cos(i);
-        y_(i) = Cy + r2*sin(i);
+        x_(i) = Cx + r1*cos(t(i));
+        y_(i) = Cy + r2*sin(t(i));
         z_(i) = z0;
         
         % Calculamos el array de puntos de la elipse CON orientacion.
