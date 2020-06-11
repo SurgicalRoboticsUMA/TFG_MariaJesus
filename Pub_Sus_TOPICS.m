@@ -1,7 +1,7 @@
 % COMUNICACION ROS
 rosinit
 
-
+% OUTPUTS
 % Leer la configuracion de las articulaciones
 sub = rossubscriber("/UR3_1/outputs/joints","sensor_msgs/JointState")
 msg = rosmessage(sub);
