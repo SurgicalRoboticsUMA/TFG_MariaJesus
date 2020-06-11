@@ -3,7 +3,7 @@
 % de conjuntos de puntos y la orientación de la trayectria. 
 % tray = [pos, anlge-axis]. GENERADOR DE TRAYECTORIAS.
 
-function trayectoria = generador_trayectoria(p0, r1, r2, eul)
+function tray = generador_trayectoria(p0, r1, r2, eul)
     close all;
     
     % Nos aseguramos de que la pose p0 sean 1x3
@@ -15,7 +15,7 @@ function trayectoria = generador_trayectoria(p0, r1, r2, eul)
     if size(eul,1) ~= 1
         error('eul is not 1x3 vector');
     end   
-    
+   
     % Nos aseguramos de que los radios no sean negativos ni = 0
     if r1 <= 0 || r2 <= 0
         error('r1 o r2 <= 0');
@@ -24,7 +24,6 @@ function trayectoria = generador_trayectoria(p0, r1, r2, eul)
     
     % Matriz de orientación
     rotm = eul2rotm(eul);
-    %rotm = rotationVectorToMatrix(rotv)
     
     % Punto inicial
     x0 = p0(1);
@@ -62,10 +61,11 @@ function trayectoria = generador_trayectoria(p0, r1, r2, eul)
         % Calculamos el array de orientacion
         angle_axis(:,i) = rotationMatrixToVector(rotm); 
     end
+    tray = [pos; angle_axis];
     
     plot3(pos(1,:),pos(2,:),pos(3,:),'g.'); grid; title('Trayectoria planificada');
     xlabel('EJE X') 
     ylabel('EJE Y') 
     zlabel('EJE Z')
-    trayectoria = [pos; angle_axis];
+    
 end
